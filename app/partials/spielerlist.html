@@ -1,0 +1,26 @@
+<br/>
+<div class="panel panel-primary">
+
+	<div class="panel panel-heading">Vollyball Spieler ({{players.length}})</div>
+
+	<table class="ng-sope table">
+		<thead>
+			<tr>
+				<th>Spieler</th>
+				<th>Geburtsdatum</th>
+				<th>Telefon</th>
+				<th><a href="#/new"><i class="glyphicon glyphicon-plus"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="player in players ">
+				<td>{{player.firstName}} {{player.name}}</td>
+				<td>{{player.birthdate}}</td>
+				<td>{{player.telefon}}</td>
+				<td><a href="#/edit/{{player.id}}"><i class="glyphicon glyphicon-pencil"></i></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
