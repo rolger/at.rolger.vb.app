@@ -6,10 +6,6 @@ angular.module(
 		[ 'ngRoute', 'vbTrainingApp.filters', 'vbTrainingApp.services',
 				'vbTrainingApp.directives', 'vbTrainingApp.controllers' ])
 		.config([ '$routeProvider', function($routeProvider) {
-			$routeProvider.when('/view1', {
-				templateUrl : 'partials/partial1.html',
-				controller : 'MyCtrl1'
-			});
 			$routeProvider.when('/training', {
 				templateUrl : 'partials/traininglist.html',
 				controller : 'TrainingListCtrl'
@@ -20,13 +16,13 @@ angular.module(
 			});
 			$routeProvider.when('/new', {
 				templateUrl : 'partials/spielerdetail.html',
-				controller : 'SpielerDetailCtrl'
+				controller : 'SpielerCreateCtrl'
 			});
 			$routeProvider.when('/edit/:playerid', {
 				templateUrl : 'partials/spielerdetail.html',
 				controller : 'SpielerEditCtrl'
 			});
 			$routeProvider.otherwise({
-				redirectTo : '/view1'
+				redirectTo : '/training'
 			});
 		} ]);

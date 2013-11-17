@@ -62,8 +62,8 @@ function SpielerListCtrl($scope, PlayerService) {
 	$scope.players = PlayerService.allPlayers;
 };
 
-function SpielerDetailCtrl($scope, $location, PlayerService) {
-	$scope.addPlayer = function() {
+function SpielerCreateCtrl($scope, $location, PlayerService) {
+	$scope.savePlayer = function() {
 		var newId = PlayerService.allPlayers.length + 1;
 
 		PlayerService.allPlayers.push({
@@ -91,7 +91,7 @@ function SpielerEditCtrl($scope, $location, $routeParams, PlayerService) {
 	$scope.newAddress = editPlayer.address;
 	$scope.newTelNumb = editPlayer.telefon;
 
-	$scope.addPlayer = function() {
+	$scope.savePlayer = function() {
 		editPlayer.firstName = $scope.newFirstName;
 		editPlayer.name = $scope.newName;
 		editPlayer.birthdate = $scope.newBirthDate;

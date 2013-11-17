@@ -2,8 +2,6 @@
 
 /* Services */
 
-// Demonstrate how to register services
-// In this case it is a simple value service.
 angular.module('vbTrainingApp.services', [])
 .value('version', '0.1')
 .factory(
@@ -13,28 +11,8 @@ angular.module('vbTrainingApp.services', [])
 				id : 1,
 				firstName : 'Roland',
 				name : 'Germ',
-				birthdate : '6.5.1966',
-				address : '1230 Wien, Khekgassse 39/9',
-				telefon : '06508901949',
-				abende : []
-			}, {
-				id : 2,
-				firstName : 'Magdalena',
-				name : 'Germ',
-				birthdate : '27.12.1966',
-				address : '1230 Wien, Khekgassse 39/9',
-				telefon : '06508901946',
-				abende : []
-			}, {
-				id : 3,
-				firstName : 'Stefanie',
-				name : 'Germ',
-				birthdate : '16.3.1990',
-				address : '1230 Wien, Khekgassse 39/9',
-				telefon : '06508901947',
 				abende : []
 			} ];
-
 			
 			var service = {
 				allPlayers : {},
