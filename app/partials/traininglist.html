@@ -11,16 +11,12 @@
 		<!-- Table -->
 		<table class="table">
 			<tbody>
-				<tr ng-repeat="player in players ">
+				<tr ng-repeat="player in players | orderBy:'firstName'">
 					<td><input type="checkbox"
 						ng-checked="player.abende.indexOf(selectedDate) != -1"
 						ng-click="toggleCheck(player)"></td>
-
-
 					<td>{{player.firstName}} {{player.name}}</td>
 					<td>{{player.birthdate}}</td>
-
-					</td>
 				</tr>
 			</tbody>
 		</table>
