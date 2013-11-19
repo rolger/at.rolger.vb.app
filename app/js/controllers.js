@@ -104,3 +104,7 @@ function SpielerEditCtrl($scope, $location, $routeParams, PlayerService) {
 	};
 
 };
+
+function UebersichtCtrl($scope) {
+
+};

@@ -14,6 +14,10 @@ angular.module(
 				templateUrl : 'partials/spielerlist.html',
 				controller : 'SpielerListCtrl'
 			});
+			$routeProvider.when('/uebersicht/:weekday', {
+				templateUrl : 'partials/uebersicht.html',
+				controller : 'UebersichtCtrl'
+			});
 			$routeProvider.when('/new', {
 				templateUrl : 'partials/spielerdetail.html',
 				controller : 'SpielerCreateCtrl'
