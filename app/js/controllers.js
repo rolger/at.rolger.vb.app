@@ -36,15 +36,14 @@ function TrainingListCtrl($scope, PlayerService) {
 		if (index != -1) {
 			player.abende.splice(index, 1);
 		}
-		
+
 		PlayerService.save();
 	};
 
 	$scope.countAttendees = function() {
 		var count = 0;
 
-		angular
-				.forEach($scope.players,
+		angular.forEach($scope.players,
 						function(player) {
 							count += (player.abende
 									.indexOf($scope.selectedDate) == -1) ? 0
@@ -99,12 +98,21 @@ function SpielerEditCtrl($scope, $location, $routeParams, PlayerService) {
 		editPlayer.telefon = $scope.newTelNumb;
 
 		$location.path('/spieler');
-		
+
 		PlayerService.save();
 	};
 
 };
 
-function UebersichtCtrl($scope) {
+function UebersichtCtrl($scope, $routeParams, PlayerService) {
+	if ($routeParams.weekday === 'MO') {
+		$scope.weekDay = 'Montag';		
+	}	else if ($routeParams.weekday === 'DO') {
+		$scope.weekDay = 'Donnerstag';		
+	}
 
+	$scope.allTrainingDates = PlayerService.allPlayers[0].abende;
+	$scope.players = PlayerService.allPlayers;
+	
+	
 };

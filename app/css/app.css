@@ -37,3 +37,11 @@ html,body {
 code {
 	font-size: 80%;
 }
+
+.verticaltext {
+	 transform: rotate(300deg);
+	-moz-transform: rotate(300deg);
+	-webkit-transform: rotate(300deg);
+	-ms-transform: rotate(300deg);
+}
+

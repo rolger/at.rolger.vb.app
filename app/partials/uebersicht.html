@@ -1,5 +1,23 @@
-<p>This is the partial for view 2.</p>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+<div class="panel panel-primary">
+	<div class="panel-heading">VB Training am {{weekDay}}</div>
+
+	<!-- Table -->
+	<table class="table">
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+				<th ng-repeat="date in allTrainingDates">{{date}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="player in players | orderBy:'firstName'">
+				<td>{{player.firstName}} {{player.name}}</td>
+				<td>{{player.birthdate}}</td>
+				<td ng-repeat="date in allTrainingDates">
+					<span ng-if="player.abende.indexOf(date) != -1"><i class="glyphicon glyphicon-ok"></i></span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
