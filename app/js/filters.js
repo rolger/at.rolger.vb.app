@@ -31,7 +31,7 @@ angular.module('vbTrainingApp.filters', [])
 					}
 				}
 				
-				return result;
+				return result.sort();
 			}
 		} )
 		
