@@ -7,14 +7,14 @@
 			<tr>
 				<th></th>
 				<th></th>
-				<th ng-repeat="date in allTrainingDates">{{date}}</th>
+				<th ng-repeat="date in allTrainingDates | forWeekday:weekDay" class="verticaltext smallcell" >{{date | shortDate}}</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="player in players | orderBy:'firstName'">
 				<td>{{player.firstName}} {{player.name}}</td>
 				<td>{{player.birthdate}}</td>
-				<td ng-repeat="date in allTrainingDates">
+				<td class="smallcell" ng-repeat="date in allTrainingDates | forWeekday:weekDay">
 					<span ng-if="player.abende.indexOf(date) != -1"><i class="glyphicon glyphicon-ok"></i></span>
 				</td>
 			</tr>

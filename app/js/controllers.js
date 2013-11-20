@@ -111,8 +111,16 @@ function UebersichtCtrl($scope, $routeParams, PlayerService) {
 		$scope.weekDay = 'Donnerstag';		
 	}
 
-	$scope.allTrainingDates = PlayerService.allPlayers[0].abende;
+	var unique = new Array();
+	for (var int = 0; int < PlayerService.allPlayers.length; int++) {
+		var all = unique.concat(PlayerService.allPlayers[int].abende);
+		
+		angular.forEach(all, function(item) {
+			if (unique.indexOf(item) > -1) return;
+			unique.push(item); 
+		});
+	}
+	
+	$scope.allTrainingDates = unique;
 	$scope.players = PlayerService.allPlayers;
-	
-	
 };
