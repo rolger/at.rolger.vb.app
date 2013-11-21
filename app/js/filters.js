@@ -1,5 +1,28 @@
 'use strict';
 
+function filterWeekdays(dates, weekday) {
+	var result = new Array();
+	var day = 0;
+	if (weekday === 'Montag') {
+		day = 1;
+	}
+	if (weekday === 'Donnerstag') {
+		day = 4;
+	}
+
+	if (day != 0) {
+		for (var int = 0; int < dates.length; int++) {
+			var dateParts = dates[int].split(".");
+			var d = new Date(dateParts[2], (dateParts[1] - 1), dateParts[0]);
+			if (d.getDay() === day) {
+				result.push(dates[int]);
+			}
+		}
+	}
+
+	return result;
+}
+
 /* Filters */
 
 angular.module('vbTrainingApp.filters', []).filter('interpolate',
@@ -13,26 +36,7 @@ angular.module('vbTrainingApp.filters', []).filter('interpolate',
 		'forWeekday',
 		function() {
 			return function(dates, weekday) {
-				var result = new Array();
-				var day = 0;
-				if (weekday === 'Montag') {
-					day = 1;
-				}
-				if (weekday === 'Donnerstag') {
-					day = 4;
-				}
-
-				if (day != 0) {
-					for (var int = 0; int < dates.length; int++) {
-						var dateParts = dates[int].split(".");
-						var d = new Date(dateParts[2], (dateParts[1] - 1),
-								dateParts[0]);
-						if (d.getDay() === day) {
-							result.push(dates[int]);
-						}
-					}
-				}
-
+				var result = filterWeekdays(dates, weekday);
 				return result.sort(function(a, b) {
 					var datePartsA = a.split(".");
 					var datePartsB = b.split(".");
@@ -49,6 +53,26 @@ angular.module('vbTrainingApp.filters', []).filter('interpolate',
 				});
 			}
 		})
+
+.filter('withDays', function() {
+	return function(players, dates, weekday) {
+		var result = [];
+		var days = filterWeekdays(dates, weekday);
+
+		angular.forEach(players, function(player) {
+			for (var i = 0; i < days.length; i++) {
+				if (player.abende.indexOf(days[i]) != -1) {
+					result.push(player);
+					return;
+				}
+
+			}
+
+		});
+
+		return result;
+	}
+})
 
 .filter('shortDate', function() {
 	return function(text) {

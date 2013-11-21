@@ -8,9 +8,17 @@ function MyCtrl1($scope) {
 
 };
 
-function MainCtrl($scope) {
+function MainCtrl($scope, PlayerService) {
 	$scope.parentobject = {};
 	$scope.parentobject.date = null;
+
+	$scope.send = function() {
+		var link = 'mailto:email@example.com?subject=Message from example'
+				+ '&body=' + 
+				JSON.stringify(PlayerService.allPlayers);
+		window.location.href = link;
+	}
+
 };
 
 function TrainingListCtrl($scope, PlayerService) {
@@ -43,7 +51,8 @@ function TrainingListCtrl($scope, PlayerService) {
 	$scope.countAttendees = function() {
 		var count = 0;
 
-		angular.forEach($scope.players,
+		angular
+				.forEach($scope.players,
 						function(player) {
 							count += (player.abende
 									.indexOf($scope.selectedDate) == -1) ? 0
@@ -106,21 +115,22 @@ function SpielerEditCtrl($scope, $location, $routeParams, PlayerService) {
 
 function UebersichtCtrl($scope, $routeParams, PlayerService) {
 	if ($routeParams.weekday === 'MO') {
-		$scope.weekDay = 'Montag';		
-	}	else if ($routeParams.weekday === 'DO') {
-		$scope.weekDay = 'Donnerstag';		
+		$scope.weekDay = 'Montag';
+	} else if ($routeParams.weekday === 'DO') {
+		$scope.weekDay = 'Donnerstag';
 	}
 
 	var unique = new Array();
 	for (var int = 0; int < PlayerService.allPlayers.length; int++) {
 		var all = unique.concat(PlayerService.allPlayers[int].abende);
-		
+
 		angular.forEach(all, function(item) {
-			if (unique.indexOf(item) > -1) return;
-			unique.push(item); 
+			if (unique.indexOf(item) > -1)
+				return;
+			unique.push(item);
 		});
 	}
-	
+
 	$scope.allTrainingDates = unique;
 	$scope.players = PlayerService.allPlayers;
 };

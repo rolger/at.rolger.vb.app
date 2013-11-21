@@ -2,7 +2,7 @@
 	<div class="panel-heading">VB Training am {{weekDay}}</div>
 
 	<!-- Table -->
-	<table class="table">
+	<table class="table table-condensed table-bordered">
 		<thead>
 			<tr>
 				<th></th>
@@ -11,7 +11,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="player in players | orderBy:'firstName'">
+			<tr ng-repeat="player in players | withDays:allTrainingDates:weekDay |orderBy:'firstName'">
 				<td>{{player.firstName}} {{player.name}}</td>
 				<td>{{player.birthdate}}</td>
 				<td class="smallcell" ng-repeat="date in allTrainingDates | forWeekday:weekDay">
