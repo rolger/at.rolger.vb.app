@@ -4,6 +4,17 @@
 
 angular.module('vbTrainingApp.controllers', []);
 
+
+function countAttendeesForDate(players, date) {
+	var count = 0;
+
+	angular.forEach(players, function(player) {
+		count += (player.abende.indexOf(date) == -1) ? 0 : 1;
+	});
+	return count;
+};
+
+
 function MyCtrl1($scope) {
 
 };
@@ -49,16 +60,7 @@ function TrainingListCtrl($scope, PlayerService) {
 	};
 
 	$scope.countAttendees = function() {
-		var count = 0;
-
-		angular
-				.forEach($scope.players,
-						function(player) {
-							count += (player.abende
-									.indexOf($scope.selectedDate) == -1) ? 0
-									: 1;
-						});
-		return count;
+		return countAttendeesForDate($scope.players, $scope.selectedDate);
 	};
 
 	$scope.isSelected = function() {
@@ -118,6 +120,8 @@ function UebersichtCtrl($scope, $routeParams, PlayerService) {
 		$scope.weekDay = 'Montag';
 	} else if ($routeParams.weekday === 'DO') {
 		$scope.weekDay = 'Donnerstag';
+	} else {
+		$scope.weekDay = 'Alle';
 	}
 
 	var unique = new Array();
@@ -133,4 +137,19 @@ function UebersichtCtrl($scope, $routeParams, PlayerService) {
 
 	$scope.allTrainingDates = unique;
 	$scope.players = PlayerService.allPlayers;
+	
+	$scope.sumOfAttendeesForDate = function(date) {
+		return countAttendeesForDate($scope.players, date);
+	};
+
+	$scope.sumOfAttendeesForAllDates = function(date) {
+		var count = 0;
+		var remainingWeekdays = filterWeekdays($scope.allTrainingDates, $scope.weekDay);
+		
+		for (var i = 0; i < remainingWeekdays.length; i++) {
+			count += countAttendeesForDate($scope.players, remainingWeekdays[i]);
+		}
+		return count;
+	};
+
 };

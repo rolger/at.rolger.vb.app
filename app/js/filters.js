@@ -1,12 +1,15 @@
 'use strict';
 
 function filterWeekdays(dates, weekday) {
+	if (weekday === 'Alle') {
+		return dates;
+	} 
+	
 	var result = new Array();
 	var day = 0;
 	if (weekday === 'Montag') {
 		day = 1;
-	}
-	if (weekday === 'Donnerstag') {
+	} else if (weekday === 'Donnerstag') {
 		day = 4;
 	}
 

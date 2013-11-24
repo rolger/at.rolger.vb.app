@@ -45,6 +45,12 @@ code {
 	-ms-transform: rotate(270deg) translateY(-10px);
 }
 
+.verticalheader
+{
+	height: 45px;
+}
+
+
 .smallcell
 {
 	height:20px;

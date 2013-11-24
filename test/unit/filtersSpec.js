@@ -16,4 +16,11 @@ describe('filter', function() {
       expect(interpolateFilter('before %VERSION% after')).toEqual('before TEST_VER after');
     }));
   });
+  
+  describe('shortDate', function() {
+	  it('should replace the year', inject(function(shortDateFilter) {
+	      expect(shortDateFilter('1.1.2042')).toEqual('1.1.');
+	    }));
+	  });
+  
 });

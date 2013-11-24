@@ -3,7 +3,7 @@
 /* Services */
 
 angular.module('vbTrainingApp.services', [])
-.value('version', '0.1')
+.value('version', '1.0')
 .factory(
 		'PlayerService',
 		function() {
