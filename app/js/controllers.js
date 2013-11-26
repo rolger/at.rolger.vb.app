@@ -4,7 +4,6 @@
 
 angular.module('vbTrainingApp.controllers', []);
 
-
 function countAttendeesForDate(players, date) {
 	var count = 0;
 
@@ -14,21 +13,9 @@ function countAttendeesForDate(players, date) {
 	return count;
 };
 
-
-function MyCtrl1($scope) {
-
-};
-
 function MainCtrl($scope, PlayerService) {
 	$scope.parentobject = {};
 	$scope.parentobject.date = null;
-
-	$scope.send = function() {
-		var link = 'mailto:email@example.com?subject=Message from example'
-				+ '&body=' + 
-				JSON.stringify(PlayerService.allPlayers);
-		window.location.href = link;
-	}
 
 };
 
@@ -137,15 +124,16 @@ function UebersichtCtrl($scope, $routeParams, PlayerService) {
 
 	$scope.allTrainingDates = unique;
 	$scope.players = PlayerService.allPlayers;
-	
+
 	$scope.sumOfAttendeesForDate = function(date) {
 		return countAttendeesForDate($scope.players, date);
 	};
 
 	$scope.sumOfAttendeesForAllDates = function(date) {
 		var count = 0;
-		var remainingWeekdays = filterWeekdays($scope.allTrainingDates, $scope.weekDay);
-		
+		var remainingWeekdays = filterWeekdays($scope.allTrainingDates,
+				$scope.weekDay);
+
 		for (var i = 0; i < remainingWeekdays.length; i++) {
 			count += countAttendeesForDate($scope.players, remainingWeekdays[i]);
 		}
@@ -153,3 +141,18 @@ function UebersichtCtrl($scope, $routeParams, PlayerService) {
 	};
 
 };
+
+function AdminCtrl($scope, PlayerService) {
+	$scope.playerData = angular.toJson(PlayerService.allPlayers, true);
+
+	$scope.email = 'email@example.com';
+
+	$scope.send = function() {
+		var link = 'mailto:' + $scope.email
+				+ '?subject=Backup from VB Trainings' + '&body='
+				+ $scope.playerData;
+		window.location.href = link;
+	};
+
+};
+

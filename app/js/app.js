@@ -26,6 +26,10 @@ angular.module(
 				templateUrl : 'partials/spielerdetail.html',
 				controller : 'SpielerEditCtrl'
 			});
+			$routeProvider.when('/admin', {
+				templateUrl : 'partials/administration.html',
+				controller : 'AdminCtrl'
+			});
 			$routeProvider.otherwise({
 				redirectTo : '/training'
 			});

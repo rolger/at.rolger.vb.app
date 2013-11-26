@@ -1,0 +1,19 @@
+
+<form class="form-inline" role="form">
+	<textarea class="form-control" rows="15" disabled>{{ playerData }}</textarea>
+
+	<p class="help-block">Mail the data to your address to create a	backup.</p>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="input-group">
+				<span class="input-group-btn">
+					<button class="btn btn-default" ng-click="send()" type="button">Send</button>
+				</span> 
+				<input type="text" class="form-control" placeholder={{email}} >
+			</div>
+			<!-- /input-group -->
+		</div>
+		<!-- /.col-lg-6 -->
+	</div>
+	<br>
+</form>
