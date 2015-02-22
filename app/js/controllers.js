@@ -60,9 +60,16 @@ function SpielerListCtrl($scope, PlayerService) {
 };
 
 function SpielerCreateCtrl($scope, $location, PlayerService) {
+	$scope.edit = false;
+	
 	$scope.savePlayer = function() {
-		var newId = PlayerService.allPlayers.length + 1;
-
+		
+		var lastIndex = PlayerService.allPlayers.length;
+		var newId = 1;
+		if (lastIndex != undefined && lastIndex != 0) {
+			newId = PlayerService.allPlayers[lastIndex-1].id + 1;
+		}
+		
 		PlayerService.allPlayers.push({
 			id : newId,
 			firstName : $scope.newFirstName,
@@ -80,6 +87,8 @@ function SpielerCreateCtrl($scope, $location, PlayerService) {
 };
 
 function SpielerEditCtrl($scope, $location, $routeParams, PlayerService) {
+	$scope.edit = true;
+
 	var editPlayer = PlayerService.findPlayer($routeParams.playerid);
 
 	$scope.newFirstName = editPlayer.firstName;
@@ -100,6 +109,13 @@ function SpielerEditCtrl($scope, $location, $routeParams, PlayerService) {
 		PlayerService.save();
 	};
 
+	$scope.destroyPlayer = function() {
+		var index = PlayerService.allPlayers.indexOf(editPlayer);
+		PlayerService.allPlayers.splice(index, 1);
+		
+		PlayerService.save();
+		$location.path('/spieler');
+	};
 };
 
 function UebersichtCtrl($scope, $routeParams, PlayerService) {
@@ -152,6 +168,12 @@ function AdminCtrl($scope, PlayerService) {
 				+ '?subject=Backup from VB Trainings' + '&body='
 				+ $scope.playerData;
 		window.location.href = link;
+	};
+
+	$scope.resetAll = function() {
+		PlayerService.reset();
+		PlayerService.save();
+		$scope.playerData = angular.toJson(PlayerService.allPlayers, true);
 	};
 
 };

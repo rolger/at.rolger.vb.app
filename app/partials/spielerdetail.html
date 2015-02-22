@@ -39,7 +39,10 @@
 	<br>
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-			<button ng-click="savePlayer()" class="btn btn-primary">Save</button>		
+			<button ng-click="savePlayer()" class="btn btn-primary">Save</button>
+			<span ng-if="edit">
+				<button ng-click="destroyPlayer()" class="btn btn-danger">Delete</button>	
+			</span>
 			<a href="#/spieler" class="btn">Cancel</a>
 		</div>
 	</div>

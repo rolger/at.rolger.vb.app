@@ -1,6 +1,15 @@
 
 <form class="form-inline" role="form">
-	<textarea class="form-control" rows="15" disabled>{{ playerData }}</textarea>
+
+	<div class="panel panel-primary">
+		<textarea class="form-control" rows="15" disabled>{{ playerData }}</textarea>
+		
+		<div class="panel-footer clearfix">
+        <div class="pull-right">
+			<button ng-click="resetAll()" class="btn btn-danger">Reset</button>
+        </div>
+    </div>
+	</div>
 
 	<p class="help-block">Mail the data to your address to create a	backup.</p>
 	<div class="row">
