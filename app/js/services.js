@@ -71,8 +71,11 @@ angular.module('vbTrainingApp.services', [])
 				
 				reset : function() {
 					service.allPlayers = new Array();
-				}
+				},
 
+				defaultValues : function() {
+					service.allPlayers = defaults;
+				}
 			};
 			// Immediately call restore from the session storage
 			// so we have our user data available immediately

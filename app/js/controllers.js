@@ -77,6 +77,8 @@ function SpielerCreateCtrl($scope, $location, PlayerService) {
 			birthdate : $scope.newBirthDate,
 			address : $scope.newAddress,
 			telefon : $scope.newTelNumb,
+			sex : $scope.newSex,
+			active : $scope.newActive,
 			abende : []
 		});
 		PlayerService.save();
@@ -96,6 +98,8 @@ function SpielerEditCtrl($scope, $location, $routeParams, PlayerService) {
 	$scope.newBirthDate = editPlayer.birthdate;
 	$scope.newAddress = editPlayer.address;
 	$scope.newTelNumb = editPlayer.telefon;
+	$scope.newSex = editPlayer.sex;
+	$scope.newActive = editPlayer.active;
 
 	$scope.savePlayer = function() {
 		editPlayer.firstName = $scope.newFirstName;
@@ -103,6 +107,8 @@ function SpielerEditCtrl($scope, $location, $routeParams, PlayerService) {
 		editPlayer.birthdate = $scope.newBirthDate;
 		editPlayer.address = $scope.newAddress;
 		editPlayer.telefon = $scope.newTelNumb;
+		editPlayer.sex = $scope.newSex;
+		editPlayer.active = $scope.newActive;
 
 		$location.path('/spieler');
 
@@ -162,6 +168,11 @@ function AdminCtrl($scope, PlayerService) {
 	$scope.playerData = angular.toJson(PlayerService.allPlayers, true);
 
 	$scope.email = 'email@example.com';
+	
+	$scope.donot = function(event) {
+		event.preventDefault();
+		console.log("Clicked!");
+	};
 
 	$scope.send = function() {
 		var link = 'mailto:' + $scope.email
@@ -175,6 +186,13 @@ function AdminCtrl($scope, PlayerService) {
 		PlayerService.save();
 		$scope.playerData = angular.toJson(PlayerService.allPlayers, true);
 	};
+	
+	$scope.defaultValues = function() {
+		PlayerService.defaultValues();
+		PlayerService.save();
+		$scope.playerData = angular.toJson(PlayerService.allPlayers, true);
+	};
+
 
 };
 
