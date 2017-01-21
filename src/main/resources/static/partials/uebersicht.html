@@ -1,0 +1,38 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">VB Training am {{weekDay}}</div>
+
+</div>
+	<!-- Table -->
+	
+	<div class="table-responsive">
+	<table class="table table-condensed table-bordered">
+		<thead>
+			<tr class="verticalheader" >
+				<th></th>
+				<th></th>
+				<th ng-repeat="date in filteredTrainings" class="text-right verticaltext smallcell" >{{date | shortDate}}</th>
+				<th class="text-right"><span class="glyphicon glyphicon-stats"></span>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="player in players | filter:hasWeekdayAttended | orderBy:'firstname'">
+				<td>{{player.firstname}} {{player.name}}</td>
+				<td class="text-right">{{player.birthdate}}</td>
+				<td class="smallcell text-center" ng-repeat="date in filteredTrainings">
+					<span ng-if="isSelected(player, date)"><i class="glyphicon glyphicon-ok"></i></span>
+				</td>
+				<td class="text-right">{{player.trainingCount}}</td>
+			</tr>
+
+			<tr>
+				<td colspan="2">Summe</td>
+				
+				<td class="smallcell text-right" ng-repeat="date in filteredTrainings">
+					{{sumOfAttendeesForDate(date)}}
+				</td>
+				<td class="smallcell text-right">{{sumOfAttendeesForAllDates}}</td>
+			</tr>
+
+		</tbody>
+	</table>
+	</div>

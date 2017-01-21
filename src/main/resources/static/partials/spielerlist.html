@@ -1,0 +1,24 @@
+<div class="panel panel-primary">
+
+	<div class="panel panel-heading">Vollyball Spieler ({{players.length}})</div>
+
+	<table class="ng-sope table">
+		<thead>
+			<tr>
+				<th>Spieler</th>
+				<th>Telefon</th>
+				<th></th>
+				<th><a href="#!/new"><i class="glyphicon glyphicon-plus"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="player in players | orderBy:'firstname'">
+				<td>{{player.firstname}} {{player.name}}</td>
+				<td>{{player.telefon}}</td>
+				<td><input type="checkbox" onclick="return false" ng-checked="player.active">
+				<td><a href="#!/edit/{{player.id}}"><i class="glyphicon glyphicon-pencil"></i></a></td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

@@ -1,2 +1,6 @@
 logs/*
 !.gitkeep
+/target/
+logs/.settings
+.classpath
+.project

@@ -1,0 +1,23 @@
+<p>Wähle ein Datum:
+<input type="text" ng-model="selectedDate" jqdatepicker />
+</p>
+
+<span ng-if="isDateSelected()">
+	<div class="panel panel-primary">
+		<div class="panel-heading">VB Training am {{selectedDate}} : {{countAttendees()}} Teilnehmer</div>
+
+		<!-- Table -->
+		<table class="table">
+			<tbody>
+				<tr ng-repeat="player in players | filter:canAttendTraining | orderBy:'firstname'">
+					<td><input type="checkbox"
+						ng-checked="isSelected(player)"
+						ng-click="toggleCheck(player)"></td>
+					<td>{{player.firstname}} {{player.name}}</td>
+					<td>{{player.birthdate}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</span>

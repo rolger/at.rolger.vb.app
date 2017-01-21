@@ -1,0 +1,66 @@
+<div class="panel panel-primary">
+
+	<div class="panel panel-heading">Spieler anlegen/Ã¤ndern</div>
+
+<div class="well">
+	<form class="form-horizontal">
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="firstname">Vorname</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="firstname" ng-model="editPlayer.firstname" placeholder="Vorname eingeben">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="name">Name</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="name" ng-model="editPlayer.name" placeholder="Name eingeben">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="birthdate">Geburtstag</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="birthdate" ng-model="editPlayer.birthdate" placeholder="Geburtstag eingeben">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="address">Adresse</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="address" ng-model="editPlayer.address" placeholder="Adresse eingeben">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="telefon">Telefon</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="telefon" ng-model="editPlayer.telefon" placeholder="Telefon eingeben">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="sex">Geschlecht</label>
+		<div class="col-sm-10">
+			<input type="radio" ng-model="editPlayer.sex" value="M"/>Männlich<br />
+			<input type="radio" ng-model="editPlayer.sex" value="W"/>Weiblich<br />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="valid">Aktiv</label>
+		<div class="col-sm-10">
+			<input type="checkbox" id="active" ng-model="editPlayer.active">
+		</div>
+	</div>
+
+	<br>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button ng-click="savePlayer()" class="btn btn-primary">Save</button>
+			<span ng-if="edit">
+				<button ng-click="destroyPlayer()" class="btn btn-danger">Delete</button>	
+			</span>
+			<a href="#/spieler" class="btn">Cancel</a>
+		</div>
+	</div>
+	</div>
+	</div>
+</div>
+</form>
+</div>
