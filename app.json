@@ -1,0 +1,6 @@
+{
+  "name": "Heroku: VB",
+  "description": "A springboot Java app deployed to Heroku.",
+  "image": "heroku/java",
+  "addons": [ "heroku-postgresql" ]
+}
