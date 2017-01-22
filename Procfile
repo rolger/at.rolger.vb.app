@@ -1,1 +1,1 @@
-web:    java -jar target/volleyballapp.jar
+web:    java -Dspring.profiles.active=heroku -jar target/volleyballapp.jar

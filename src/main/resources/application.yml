@@ -25,7 +25,7 @@ spring:
     dialect: org.hibernate.dialect.MySQL5Dialect
 ---
 spring:
-  profiles: prod
+  profiles: heroku
   datasource:
     url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USER}
