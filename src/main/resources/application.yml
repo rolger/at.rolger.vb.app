@@ -1,0 +1,39 @@
+server:
+  port: ${PORT}
+  
+spring:
+    jackson.serialization.WRITE_DATES_AS_TIMESTAMPS: false
+
+security:
+    user:
+      name: user
+      password: password
+---
+spring:
+  profiles: local,default
+  datasource:
+    url: jdbc:mysql://localhost:3306/volleyball?useSSL=false
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
+  jpa:
+    show_sql: true
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+  jpa.properties.hibernate:
+    dialect: org.hibernate.dialect.MySQL5Dialect
+---
+spring:
+  profiles: prod
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USER}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driverClassName: org.postgresql.Driver
+  jpa.generate-ddl : true
+  jpa:
+    show_sql: true
+    hibernate:
+      ddl-auto : update
+      format_sql: true
